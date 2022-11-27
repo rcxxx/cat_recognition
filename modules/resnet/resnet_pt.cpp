@@ -8,7 +8,7 @@ namespace resnet {
 
     ResNet::ResNet(const std::string& _file_path) {
         try {
-            module = torch::jit::load(_file_path);
+            this->module = torch::jit::load(_file_path);
             is_load = true;
         }
         catch (const c10::Error& ){

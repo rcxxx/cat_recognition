@@ -1,7 +1,9 @@
-.vscode
-
 .idea
 
 /cmake-build-debug
 
 /build
+
+/tools/UI-Tools/UI-Tools.pro.user
+
+/tools/build-UI-Tools-*

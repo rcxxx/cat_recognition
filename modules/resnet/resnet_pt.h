@@ -6,6 +6,8 @@
 #define CAT_DETECTION_RESNET_H
 
 #include <opencv2/opencv.hpp>
+
+
 #include <torch/torch.h>
 #include <torch/script.h>
 
@@ -22,6 +24,8 @@ namespace resnet {
         inline bool isLoad() const{
             return this->is_load;
         }
+
+        ~ResNet() = default;
 
     private:
         cv::Mat imgProcess(const cv::Mat &_inp_mat);

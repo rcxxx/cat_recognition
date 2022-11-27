@@ -3,5 +3,6 @@
 yolo_model_path: "../models/yolov5s-480.onnx"
 classes_path: "../models/classes.txt"
 resnet_model_path: "../models/resnet50-rm-fc.pth"
+feature_csv_path: "../data/feature.csv"
 video_path: ""
 device: 0
