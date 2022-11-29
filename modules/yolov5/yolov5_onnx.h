@@ -1,7 +1,3 @@
-//
-// Created by rcxxx on 22-10-23.
-//
-
 #ifndef YOLOV5_CAT_DET_YOLOV5_ONNX_H
 #define YOLOV5_CAT_DET_YOLOV5_ONNX_H
 

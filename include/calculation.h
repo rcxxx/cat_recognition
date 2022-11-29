@@ -1,7 +1,3 @@
-//
-// Created by rcxxx on 22-11-22.
-//
-
 #ifndef CAT_RECOGNITION_CALCULATION_H
 #define CAT_RECOGNITION_CALCULATION_H
 

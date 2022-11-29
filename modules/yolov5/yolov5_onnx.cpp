@@ -1,7 +1,3 @@
-//
-// Created by rcxxx on 22-10-23.
-//
-
 #include "yolov5_onnx.h"
 
 namespace yolov5 {

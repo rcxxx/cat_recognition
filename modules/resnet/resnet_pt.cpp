@@ -1,7 +1,3 @@
-//
-// Created by rcxxx on 22-10-28.
-//
-
 #include "resnet_pt.h"
 
 namespace resnet {

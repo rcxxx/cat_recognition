@@ -79,10 +79,24 @@ int main() {
                 auto bbox = idx.bbox;
                 cv::rectangle(src_img, bbox, box_color, 2);
                 cv::rectangle(src_img, cv::Point(bbox.x, bbox.y + 10), cv::Point(bbox.x + bbox.width, bbox.y), box_color, cv::FILLED);
-                cv::putText(src_img, yolo.classList()[15], cv::Point(bbox.x, bbox.y + 5), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 0, 0), 2);
+                cv::putText(src_img, yolo.classList()[15], cv::Point(bbox.x, bbox.y + 5), cv::FONT_HERSHEY_SIMPLEX, 1.5, cv::Scalar(0, 0, 0), 2);
 
-                cv::Mat crop_img = rmRoiBoundary(src_img, bbox, true, 0.2);
+                cv::Mat crop_img = rmRoiBoundary(src_img, bbox, true, 0.25);
                 torch::Tensor feature_self = resnet50.inference(crop_img);
+
+                float min_dist = FLT_MAX;
+                std::string crop_id;
+
+                for (const auto& f:feat_list){
+                    torch::Tensor feature_local = torch::tensor(f.data_row);
+                    float dist_tmp = tensorEuclideanDistance(feature_self, feature_local)[0];
+                    if (dist_tmp <= min_dist){
+                        min_dist = dist_tmp;
+                        crop_id = f.id;
+                    }
+                }
+
+                cv::putText(src_img, crop_id, cv::Point(bbox.x+20, bbox.y + 5), cv::FONT_HERSHEY_SIMPLEX, 1.5, cv::Scalar(0, 0, 0), 2);
             }
         }
     }

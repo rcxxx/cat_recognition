@@ -1,7 +1,3 @@
-//
-// Created by rcxxx on 22-10-28.
-//
-
 #ifndef CAT_DETECTION_RESNET_H
 #define CAT_DETECTION_RESNET_H
 

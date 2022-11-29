@@ -10,8 +10,6 @@ include_directories(
         ${PROJECT_SOURCE_DIR}/include
 )
 
-add_executable(cat_recognition src/main.cpp)
-
 # Dependence lib
 ## Find and add opencv as required
 find_package(OpenCV REQUIRED)
@@ -28,9 +26,18 @@ link_libraries(${TORCH_LIBRARIES})
 add_subdirectory(${PROJECT_SOURCE_DIR}/modules/yolov5)
 add_subdirectory(${PROJECT_SOURCE_DIR}/modules/resnet)
 
-# Target
-target_link_libraries(cat_recognition
-        ${OpenCV_LIBS}
-        ${TORCH_LIBRARIES}
-        yolov5
-        resnet)
+
+file(GLOB_RECURSE mains RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+foreach(mainfile IN LISTS mains)
+    # Get file name without directory
+    get_filename_component(mainname ${mainfile} NAME_WE)
+    add_executable(${mainname} ${mainfile})
+    # Target
+    target_link_libraries(${mainname}
+            ${OpenCV_LIBS}
+            ${TORCH_LIBRARIES}
+            yolov5
+            resnet)
+endforeach()
+
+#add_executable(cat_recognition src/main.cpp)
